@@ -28,7 +28,7 @@ function IASZone(address, headers, zigbeeDevice, socket) {
 
     this.writable = false;
     this.V = 0;
-    this.D = 600; // IAS Zone
+    this.D = 244;//600; // IAS Zone
 
     this.onCommand(P.RPCS_ZONESTATE_CHANGE, function(address, reader) {
         this.readState(reader);
@@ -54,7 +54,9 @@ IASZone.prototype.readState = function(reader) {
 
     this.log.debug('Zone State Parsed : ', state);
 
-    this.emit('data', state);
+    //this.emit('data', state);
+    //emit '1' for now to trigger a rule
+    this.emit('data', '1');
 };
 
 IASZone.prototype.fetchState = function() {

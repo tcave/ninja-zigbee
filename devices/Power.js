@@ -11,12 +11,14 @@ function Driver(address, headers, zigbeeDevice, socket) {
     this.V = 0;
     this.D = 243; //power
 
+    this._pollInterval = 5000;
+
     Driver.super_.apply(this, arguments);
 }
 
 Driver.prototype.readZigbeeValue = function(reader) {
     reader.word32lu('value');
-    return reader.vars.value;
+    return (reader.vars.value / 1000);
 };
 
 module.exports = Driver;

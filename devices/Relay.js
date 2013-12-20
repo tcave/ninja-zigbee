@@ -11,7 +11,7 @@ function Driver(address, headers, zigbeeDevice, socket) {
     this.V = 0;
     this.D = 238; // relay
 
-    this.bindToCluster('On/Off');
+    this._pollInterval = 3000;
 
     Driver.super_.apply(this, arguments);
 }
